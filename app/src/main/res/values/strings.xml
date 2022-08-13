@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Picasso Vs. Glide</string>
+    <string name="action_settings">Settings</string>
+    <string name="list_fragment_label">Unsplash Images</string>
+    <string name="placeholder">placeholder</string>
+</resources>

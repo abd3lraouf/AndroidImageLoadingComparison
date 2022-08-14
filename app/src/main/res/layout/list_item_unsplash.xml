@@ -20,7 +20,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shimmer_duration="1800">
+            app:shimmer_duration="1800"
+            tools:visibility="gone">
 
             <View
                 android:layout_width="match_parent"
@@ -48,7 +49,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
             <ImageView
                 android:id="@+id/image"
@@ -66,7 +68,7 @@
                 android:layout_margin="16dp"
                 android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                 android:textColor="@color/white"
-                tools:text="Alejandro Escamilla" />
+                tools:text="Alejandro Esilla" />
 
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

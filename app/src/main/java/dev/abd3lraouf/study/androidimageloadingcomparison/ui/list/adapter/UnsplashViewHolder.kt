@@ -1,14 +1,17 @@
 package dev.abd3lraouf.study.androidimageloadingcomparison.ui.list.adapter
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.request.target.DrawableImageViewTarget
+import com.bumptech.glide.request.transition.Transition
 import dev.abd3lraouf.study.androidimageloadingcomparison.databinding.ListItemUnsplashBinding
 import dev.abd3lraouf.study.androidimageloadingcomparison.domain.model.UnsplashImage
+import dev.abd3lraouf.study.androidimageloadingcomparison.ui.core.glide.GlideApp
 
 class UnsplashViewHolder(private val binding: ListItemUnsplashBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -16,15 +19,22 @@ class UnsplashViewHolder(private val binding: ListItemUnsplashBinding) :
     fun bind(unsplashImage: UnsplashImage) {
         showData(UnsplashImage.Empty)
 
-        val callback = object : Callback {
-            override fun onSuccess() = showData(unsplashImage)
-            override fun onError(e: Exception?) = showData(unsplashImage)
+        if (unsplashImage == UnsplashImage.Empty) {
+            showData(UnsplashImage.Empty)
+            return
         }
-        Picasso.get()
-            .load(unsplashImage.url)
-            .fit()
+
+        val callback = object : DrawableImageViewTarget(binding.image) {
+            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                super.onResourceReady(resource, transition)
+                showData(unsplashImage)
+            }
+        }
+        GlideApp.with(itemView)
+            .asDrawable()
+            .load(unsplashImage.url.toUri())
             .centerCrop()
-            .into(binding.image, callback)
+            .into(callback)
     }
 
     private fun showData(unsplashImage: UnsplashImage) {

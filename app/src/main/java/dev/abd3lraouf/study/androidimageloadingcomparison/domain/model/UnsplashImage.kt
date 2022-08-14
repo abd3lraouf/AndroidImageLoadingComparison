@@ -11,7 +11,7 @@ data class UnsplashImage(
     val url: String
 ) {
     companion object {
-        val Empty = UnsplashImage(id = "", author = "", url = "dummy-url-for-picasso")
+        val Empty = UnsplashImage(id = "", author = "", url = "")
 
         fun makeFakeItems(count: Int): List<UnsplashImage> = (0 until count).map { Empty }
     }
